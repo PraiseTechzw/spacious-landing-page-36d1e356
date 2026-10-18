@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteHeader, useReveal } from "@/components/site-header";
 import {
   Check, MessageCircle, Calendar, Users, BookOpen, Store, Truck, Stethoscope, Rocket, ArrowRight,
   Facebook, Linkedin, Youtube, Instagram, Headphones, Sparkles, Hexagon, Triangle, Circle, Square, Diamond,
@@ -25,7 +26,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const btn = "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition hover:-translate-y-0.5";
+const btn = "btn-base inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold";
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return <p className="text-sm font-semibold text-brand">{children}</p>;
@@ -53,35 +54,26 @@ function Bubble({ className, children, me }: { className: string; children: Reac
 }
 
 function Index() {
+  useReveal();
   return (
-    <div className="page-glow bg-background font-sans text-foreground">
-      {/* Nav */}
-      <header className="glass sticky top-4 z-50 mx-4 mt-4 flex max-w-6xl md:mx-auto rounded-full items-center justify-between px-6 py-3">
-        <a href="/" className="flex items-center gap-2 text-xl font-extrabold">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand text-primary-foreground"><MessageCircle className="h-4 w-4" /></span>
-          Sawabot
-        </a>
-        <nav className="hidden gap-10 text-sm text-muted-foreground md:flex">
-          <a href="#">Home</a><a href="#features">Features</a><a href="#industry">Industry</a><a href="#how">How it Works</a><a href="#pricing">Pricing</a>
-        </nav>
-        <a href="#start" className={`${btn} bg-brand text-primary-foreground`}>Get started</a>
-      </header>
+    <div id="top" className="page-glow min-h-screen overflow-x-clip bg-background font-sans text-foreground">
+      <SiteHeader />
 
       {/* Hero */}
       <section className="mx-auto max-w-7xl px-6">
         <div className="relative">
-          <div className="hero-grad relative grid min-h-[560px] overflow-hidden rounded-[2.5rem] rounded-bl-none px-8 pb-40 pt-16 md:grid-cols-2 md:px-16 md:pt-24">
+          <div className="hero-grad relative grid min-h-[560px] overflow-hidden rounded-[2.5rem] rounded-bl-none px-6 pb-40 pt-14 sm:px-8 md:grid-cols-2 md:px-16 md:pt-24">
             <div className="relative z-10 text-primary-foreground">
-              <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
+              <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
                 Turn WhatsApp<br />Chats Into<br /><span className="text-sun">Sales</span>
               </h1>
               <p className="mt-6 max-w-md opacity-90">AI that answers customer enquiries, captures leads and follows up on sales for Zimbabwean shops — automatically, on WhatsApp.</p>
               <div className="mt-10 flex flex-wrap gap-4">
-                <a href="#start" className={`${btn} bg-brand-soft text-brand`}>Start free trial</a>
+                <a href="#pricing" className={`${btn} bg-brand-soft text-brand`}>Start free trial <ArrowRight className="h-4 w-4" /></a>
                 <a href="#demos" className={`${btn} bg-background text-foreground`}>Try a WhatsApp demo</a>
               </div>
             </div>
-            <img src={heroPhone} alt="Hand holding a phone with a WhatsApp shop chat" width={1024} height={1152} className="hero-fade absolute bottom-0 right-0 h-full w-auto max-w-[60%] object-cover object-left" />
+            <img src={heroPhone} alt="Hand holding a phone with a WhatsApp shop chat" width={1024} height={1152} className="hero-fade absolute bottom-0 right-0 hidden h-full sm:block w-auto max-w-[60%] object-cover object-left" />
             {/* decorative design */}
             <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full border-[40px] border-primary-foreground/5" />
             <div className="pointer-events-none absolute left-1/3 top-10 h-40 w-40 rounded-full border border-dashed border-primary-foreground/20" />
@@ -103,12 +95,12 @@ function Index() {
       </section>
 
       {/* Who */}
-      <section id="industry" className="mx-auto max-w-6xl px-6 py-28 text-center">
+      <section data-reveal id="industry" className="mx-auto max-w-6xl px-6 py-20 text-center md:py-28">
         <p className="text-sm font-semibold tracking-widest text-destructive">WHO IT'S FOR</p>
         <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">Built for Zimbabwean businesses that sell on WhatsApp</h2>
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[[Store, "Clothing shops &", "boutiques"], [Truck, "Online retailers &", "delivery stores"], [Users, "Small & medium", "businesses"], [Rocket, "Growing African", "brands"]].map(([I, a, b]: any) => (
-            <div key={a} className="rounded-3xl glass-soft p-7 text-left transition hover:-translate-y-1 hover:shadow-xl">
+            <div key={a} className="lift rounded-3xl glass-soft p-7 text-left">
               <span className="grid h-10 w-10 place-items-center rounded-xl glass shadow-sm"><I className="h-5 w-5 text-destructive" /></span>
               <p className="mt-8 font-semibold">{a}<br />{b}</p>
             </div>
@@ -118,7 +110,7 @@ function Index() {
       </section>
 
       {/* Two ways */}
-      <section id="pricing" className="mx-auto max-w-7xl px-6">
+      <section data-reveal id="pricing" className="mx-auto max-w-7xl px-6">
         <div className="rounded-[2.5rem] glass-soft px-6 py-20 text-center md:px-16">
           <Eyebrow>Simple monthly subscriptions</Eyebrow>
           <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl">Pay Monthly For The Features And Usage Your Business Needs.</h2>
@@ -127,7 +119,7 @@ function Index() {
               { tag: "For shops getting started", name: "Sawabot Starter", sub: "Automatic answers to your most common customer enquiries.", items: ["Instant replies on prices, sizes & stock", "Delivery & payment info (EcoCash, cash, swipe)", "Capture every new customer", "Available 24/7, even after hours"], best: ["Clothing shops", "Boutiques", "Small retailers"], cta: "Start with Starter", c: "bg-primary", t: "text-brand", lift: "md:mt-10" },
               { tag: "For growing sales teams", name: "Sawabot Growth", sub: "Turn conversations into sales with leads and follow-ups.", items: ["Everything in Starter", "Organise all chats in one dashboard", "Track and manage sales leads", "Automatic follow-ups on opportunities"], best: ["Online retailers", "Multi-staff shops", "SMEs"], cta: "Choose Growth", c: "bg-primary", t: "text-destructive", lift: "" },
             ].map((p) => (
-              <div key={p.name} className={`rounded-[2rem] glass p-10 shadow-sm ${p.lift}`}>
+              <div key={p.name} className={`lift rounded-[2rem] glass p-8 md:p-10 ${p.lift}`}>
                 <p className={`text-xs font-semibold ${p.t}`}>{p.tag}</p>
                 <h3 className="mt-2 text-2xl font-bold">{p.name}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{p.sub}</p>
@@ -148,18 +140,18 @@ function Index() {
       </section>
 
       {/* Logos */}
-      <section className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-8 px-6 py-16 text-muted-foreground">
+      <section data-reveal className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-8 px-6 py-16 text-muted-foreground">
         {[[Hexagon, "Logoipsum"], [Triangle, "Logoipsum"], [Circle, "LOGOIPSUM"], [Square, "logoipsum"], [Diamond, "Logoipsum"]].map(([I, n]: any, i) => (
           <div key={i} className="flex items-center gap-2 text-lg font-bold opacity-60"><I className="h-6 w-6" />{n}</div>
         ))}
       </section>
 
       {/* Yellow banner */}
-      <section className="mx-auto max-w-7xl px-6 pb-28">
-        <div className="relative grid items-end overflow-hidden rounded-[2.5rem] bg-sun px-10 pt-14 md:grid-cols-2 md:px-16">
+      <section data-reveal className="mx-auto max-w-7xl px-6 pb-28">
+        <div className="relative grid items-end overflow-hidden rounded-[2.5rem] bg-sun px-6 pt-14 sm:px-10 md:grid-cols-2 md:px-16">
           <div className="pb-16 self-center">
             <h2 className="text-3xl font-semibold leading-tight tracking-tight text-navy md:text-5xl">No New App.<br />No Complex Software.<br /><span className="font-extrabold">Just Your WhatsApp,<br />Selling For You.</span></h2>
-            <a href="#features" className={`${btn} mt-10 border border-navy text-navy`}>Learn more</a>
+            <a href="#features" className={`${btn} mt-10 border border-navy text-navy hover:bg-navy hover:text-sun`}>Learn more</a>
           </div>
           <img src={womanPhone} alt="Woman smiling at her phone" loading="lazy" width={1024} height={1024} className="w-full max-w-md justify-self-center" />
           <div className="absolute right-8 top-8 grid h-16 w-16 place-items-center rounded-full bg-brand text-primary-foreground shadow-xl"><MessageCircle className="h-8 w-8" /></div>
@@ -167,7 +159,7 @@ function Index() {
       </section>
 
       {/* Features */}
-      <section id="features" className="mx-auto max-w-6xl px-6 pb-28">
+      <section data-reveal id="features" className="mx-auto max-w-6xl px-6 pb-28">
         <div className="text-center">
           <p className="text-sm font-semibold tracking-widest text-destructive">DISCOVER OUR FEATURES</p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">What Sawabot helps you do ?</h2>
@@ -186,7 +178,7 @@ function Index() {
           </Feature>
           {/* 2 */}
           <Feature n="2" reverse title={<>Capture & Manage<br />Sales Leads</>} desc="Every interested customer is saved — nobody slips through." items={["Save names & numbers automatically", "Tag leads by product & interest", "See which leads are ready to buy"]}>
-            <div className="relative">
+            <div className="zoom-img relative rounded-[2rem]">
               <img src={booking} alt="Team managing bookings" loading="lazy" width={1024} height={768} className="aspect-[4/3] w-full rounded-[2rem] object-cover" />
               <Badge className="-right-4 top-10"><Calendar className="h-6 w-6" /></Badge>
               <Badge className="bottom-8 left-1/2"><MessageCircle className="h-6 w-6" /></Badge>
@@ -194,7 +186,7 @@ function Index() {
           </Feature>
           {/* 3 */}
           <Feature n="3" title={<>Organise Every<br />Conversation</>} desc="All your WhatsApp chats in one central dashboard." items={["One inbox for your whole team", "Hand over to a person anytime", "Never lose a message again"]}>
-            <div className="relative">
+            <div className="zoom-img relative rounded-[2rem]">
               <img src={support} alt="Support team" loading="lazy" width={1024} height={768} className="aspect-[4/3] w-full rounded-[2rem] object-cover" />
               <Badge className="left-6 top-1/2"><Headphones className="h-6 w-6" /></Badge>
               <Badge className="-bottom-5 left-1/2"><MessageCircle className="h-6 w-6" /></Badge>
@@ -202,7 +194,7 @@ function Index() {
           </Feature>
           {/* 4 */}
           <Feature n="4" reverse title={<>Follow Up &<br />Close More Sales</>} desc="Sawabot reminds customers who showed interest — so you sell more." items={["Automatic follow-up messages", "New stock & promo alerts", "Answers only from your product list"]}>
-            <div className="relative">
+            <div className="zoom-img relative rounded-[2rem]">
               <img src={knowledge} alt="AI knowledge base" loading="lazy" width={1024} height={768} className="aspect-[4/3] w-full rounded-[2rem] object-cover" />
               <span className="absolute bottom-10 left-8 rounded-full bg-brand px-4 py-2 text-xs font-semibold text-primary-foreground shadow-lg">Data synced ✓</span>
             </div>
@@ -211,8 +203,8 @@ function Index() {
       </section>
 
       {/* How */}
-      <section id="how" className="mx-auto max-w-7xl px-6">
-        <div className="rounded-[2.5rem] rounded-bl-none bg-navy px-10 py-20 text-primary-foreground">
+      <section data-reveal id="how" className="mx-auto max-w-7xl px-6">
+        <div className="rounded-[2.5rem] rounded-bl-none bg-navy px-6 py-16 text-primary-foreground sm:px-10 md:py-20">
           <h2 className="text-center text-3xl font-bold">How it works ?</h2>
           <div className="relative mt-16 grid gap-12 md:grid-cols-3">
             <div className="absolute left-[8%] right-[8%] top-5 hidden border-t border-dashed border-primary-foreground/30 md:block" />
@@ -227,20 +219,20 @@ function Index() {
             <span className="flex items-center gap-2"><Check className="h-4 w-4 text-brand" /> People start chatting immediately.</span>
             <span className="flex items-center gap-2"><Check className="h-4 w-4 text-brand" /> Leads and chats are organised in one dashboard.</span>
           </div>
-          <div className="text-center"><a href="#start" className={`${btn} mt-10 border border-brand text-brand`}>Learn more</a></div>
+          <div className="text-center"><a href="#demos" className={`${btn} mt-10 border border-brand text-brand hover:bg-brand hover:text-primary-foreground`}>See live demos</a></div>
         </div>
       </section>
 
       {/* Demos */}
-      <section id="demos" className="mx-auto max-w-6xl px-6 py-28 text-center">
+      <section data-reveal id="demos" className="mx-auto max-w-6xl px-6 py-20 md:py-28 text-center">
         <Eyebrow>Live Demos</Eyebrow>
         <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">The Best Way To Understand<br />Sawabot Is To Try It.</h2>
         <div className="mt-14 grid gap-8 md:grid-cols-2">
           {[["Message a demo", "clothing shop on WhatsApp", clinic], ["Message a demo", "online store", realestate]].map(([a, b, img]) => (
-            <div key={b} className="rounded-[2rem] glass-soft p-8">
+            <div key={b} className="lift zoom-img rounded-[2rem] glass-soft p-6 md:p-8">
               <p className="text-lg font-medium">{a}<br />{b}</p>
               <img src={img} alt={b} loading="lazy" width={1024} height={640} className="mx-auto mt-6 aspect-[16/10] w-4/5 rounded-2xl object-cover" />
-              <a href="#" className={`${btn} mt-8 bg-brand-soft text-brand`}>Try it now</a>
+              <a href="#start" className={`${btn} mt-8 bg-brand-soft text-brand`}>Try it now <ArrowRight className="h-4 w-4" /></a>
             </div>
           ))}
         </div>
@@ -248,16 +240,16 @@ function Index() {
       </section>
 
       {/* CTA */}
-      <section id="start" className="mx-auto max-w-7xl px-6 pb-20">
+      <section data-reveal id="start" className="mx-auto max-w-7xl px-6 pb-20">
         <div className="relative grid items-center gap-10 md:grid-cols-[1.4fr_1fr]">
-          <div className="hero-grad relative rounded-[2.5rem] px-10 py-14 text-primary-foreground md:px-14">
+          <div className="hero-grad relative rounded-[2.5rem] px-6 py-12 text-primary-foreground sm:px-10 md:px-14 md:py-14">
             <h2 className="text-3xl font-bold">Get started with Sawabot</h2>
             <ul className="mt-6 space-y-2 opacity-90">
               <li>→ Try a live WhatsApp demo</li><li>→ Go live in days, not months</li><li>→ Simple monthly plans in USD</li>
             </ul>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a href="#" className={`${btn} bg-background text-foreground`}>Start a WhatsApp demo</a>
-              <a href="#" className={`${btn} bg-navy`}>Book a demo</a>
+              <a href="#demos" className={`${btn} bg-background text-foreground`}>Start a WhatsApp demo <ArrowRight className="h-4 w-4" /></a>
+              <a href="#pricing" className={`${btn} bg-navy text-primary-foreground`}>Book a demo</a>
             </div>
             <div className="absolute -right-6 top-6 hidden h-16 w-16 place-items-center rounded-2xl bg-brand shadow-xl md:grid"><MessageCircle className="h-8 w-8" /></div>
           </div>
@@ -271,14 +263,14 @@ function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="mx-auto max-w-7xl px-6 pb-8">
-        <div className="grid gap-10 rounded-[2.5rem] bg-foreground px-10 py-14 text-background sm:grid-cols-2 md:grid-cols-4">
-          {[["Sitemap", ["About", "Features", "How it works", "Pricing", "Contact"]], ["Industries", ["Clothing Shops", "Boutiques", "Online Retailers", "SMEs", "eCommerce"]], ["Solutions", ["Customer Support", "Lead Capture", "Conversation Inbox", "Sales Follow-ups"]]].map(([h, l]: any) => (
-            <div key={h}><p className="font-bold">{h}</p><ul className="mt-4 space-y-2 text-sm opacity-70">{l.map((x: string) => <li key={x}>{x}</li>)}</ul></div>
+      <footer data-reveal className="mx-auto max-w-7xl px-6 pb-8">
+        <div className="grid gap-10 rounded-[2.5rem] bg-foreground px-6 py-12 text-background sm:px-10 md:py-14 sm:grid-cols-2 md:grid-cols-4">
+          {[["Sitemap", [["About", "#top"], ["Features", "#features"], ["How it works", "#how"], ["Pricing", "#pricing"], ["Contact", "#start"]]], ["Industries", [["Clothing Shops", "#industry"], ["Boutiques", "#industry"], ["Online Retailers", "#industry"], ["SMEs", "#industry"], ["eCommerce", "#industry"]]], ["Solutions", [["Customer Support", "#features"], ["Lead Capture", "#features"], ["Conversation Inbox", "#features"], ["Sales Follow-ups", "#features"]]]].map(([h, l]: any) => (
+            <div key={h}><p className="font-bold">{h}</p><ul className="mt-4 space-y-2 text-sm">{l.map(([x, href]: string[]) => <li key={x}><a href={href} className="opacity-70 transition hover:opacity-100 focus-visible:opacity-100">{x}</a></li>)}</ul></div>
           ))}
           <div className="flex flex-col items-start gap-6 md:items-end">
             <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand"><MessageCircle className="h-6 w-6" /></div>
-            <div className="flex gap-4 opacity-80"><Facebook className="h-5 w-5" /><Linkedin className="h-5 w-5" /><Youtube className="h-5 w-5" /><Instagram className="h-5 w-5" /></div>
+            <div className="flex gap-2">{[[Facebook, "Facebook", "https://facebook.com"], [Linkedin, "LinkedIn", "https://linkedin.com"], [Youtube, "YouTube", "https://youtube.com"], [Instagram, "Instagram", "https://instagram.com"]].map(([I, n, u]: any) => <a key={n} href={u} target="_blank" rel="noreferrer" aria-label={n} className="grid h-10 w-10 place-items-center rounded-full opacity-80 transition hover:-translate-y-0.5 hover:bg-brand hover:opacity-100"><I className="h-5 w-5" /></a>)}</div>
             <p className="text-xs opacity-60 md:text-right">© 2026 Sawabot AI.<br />Helping African businesses grow.<br />Harare, Zimbabwe.</p>
           </div>
         </div>
