@@ -56,7 +56,7 @@ function Index() {
   return (
     <div className="page-glow bg-background font-sans text-foreground">
       {/* Nav */}
-      <header className="glass sticky top-4 z-50 mx-auto mt-4 flex max-w-7xl rounded-full items-center justify-between px-6 py-3">
+      <header className="glass sticky top-4 z-50 mx-4 mt-4 flex max-w-6xl md:mx-auto rounded-full items-center justify-between px-6 py-3">
         <a href="/" className="flex items-center gap-2 text-xl font-extrabold">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand text-primary-foreground"><MessageCircle className="h-4 w-4" /></span>
           Sawabot
