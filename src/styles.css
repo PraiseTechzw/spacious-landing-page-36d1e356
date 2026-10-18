@@ -52,6 +52,12 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
   --color-sidebar: var(--sidebar);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-navy: var(--navy);
+  --color-sun: var(--sun);
+  --color-surface: var(--surface);
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
@@ -62,15 +68,20 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 1rem;
+  --brand: oklch(0.56 0.13 158);
+  --brand-soft: oklch(0.95 0.04 158);
+  --navy: oklch(0.3 0.06 275);
+  --sun: oklch(0.88 0.16 95);
+  --surface: oklch(0.975 0.005 158);
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.56 0.13 158);
+  --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
@@ -142,3 +153,8 @@
     color: var(--color-foreground);
   }
 }
+
+@utility hero-grad { background: radial-gradient(circle at 80% 20%, oklch(0.66 0.14 158), oklch(0.46 0.11 160) 70%); }
+@utility float { animation: floaty 6s ease-in-out infinite; }
+@keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+@utility hero-fade { mask-image: linear-gradient(to right, transparent, black 25%); -webkit-mask-image: linear-gradient(to right, transparent, black 25%); }
