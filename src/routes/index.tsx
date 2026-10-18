@@ -35,7 +35,7 @@ function Ticks({ items, pill }: { items: string[]; pill?: boolean }) {
   return (
     <ul className="mt-6 space-y-3">
       {items.map((i) => (
-        <li key={i} className={`flex items-center gap-3 text-sm text-foreground/80 ${pill ? "w-fit rounded-full border bg-card px-4 py-2 shadow-sm" : ""}`}>
+        <li key={i} className={`flex items-center gap-3 text-sm text-foreground/80 ${pill ? "w-fit rounded-full border glass px-4 py-2 shadow-sm" : ""}`}>
           <Check className="h-4 w-4 shrink-0 text-brand" />
           {i}
         </li>
@@ -45,18 +45,18 @@ function Ticks({ items, pill }: { items: string[]; pill?: boolean }) {
 }
 
 function Badge({ className, children }: { className: string; children: React.ReactNode }) {
-  return <div className={`absolute grid h-12 w-12 place-items-center rounded-2xl bg-card text-brand shadow-xl ${className}`}>{children}</div>;
+  return <div className={`absolute grid h-12 w-12 place-items-center rounded-2xl glass text-brand shadow-xl ${className}`}>{children}</div>;
 }
 
 function Bubble({ className, children, me }: { className: string; children: React.ReactNode; me?: boolean }) {
-  return <div className={`absolute max-w-[11rem] rounded-2xl px-3 py-2 text-xs shadow-lg ${me ? "bg-brand-soft" : "bg-card"} ${className}`}>{children}</div>;
+  return <div className={`absolute max-w-[11rem] rounded-2xl px-3 py-2 text-xs shadow-lg ${me ? "bg-brand-soft" : "glass"} ${className}`}>{children}</div>;
 }
 
 function Index() {
   return (
-    <div className="bg-background font-sans text-foreground">
+    <div className="page-glow bg-background font-sans text-foreground">
       {/* Nav */}
-      <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
+      <header className="glass sticky top-4 z-50 mx-auto mt-4 flex max-w-7xl rounded-full items-center justify-between px-6 py-6">
         <a href="/" className="flex items-center gap-2 text-xl font-extrabold">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand text-primary-foreground"><MessageCircle className="h-4 w-4" /></span>
           Sawabot
@@ -88,13 +88,13 @@ function Index() {
             <div className="pointer-events-none absolute bottom-32 left-[45%] h-3 w-3 rounded-full bg-sun" />
             <div className="pointer-events-none absolute right-[42%] top-24 h-2 w-2 rounded-full bg-primary-foreground/60" />
             <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-10" viewBox="0 0 1200 560" preserveAspectRatio="none"><path d="M0 420 C 300 300, 500 560, 800 380 S 1200 300, 1200 300" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary-foreground" /><path d="M0 470 C 300 350, 500 610, 800 430 S 1200 350, 1200 350" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary-foreground" /></svg>
-            <div className="float absolute right-[38%] top-1/3 z-10 hidden rounded-2xl bg-card px-4 py-3 text-xs font-semibold text-foreground shadow-xl md:block">⚡ Replied in 2s</div>
-            <div className="float absolute bottom-40 right-8 z-10 hidden rounded-2xl bg-card px-4 py-3 text-xs font-semibold text-foreground shadow-xl md:block" style={{ animationDelay: "1.5s" }}>🛍️ New lead captured</div>
+            <div className="float absolute right-[38%] top-1/3 z-10 hidden rounded-2xl glass px-4 py-3 text-xs font-semibold text-foreground shadow-xl md:block">⚡ Replied in 2s</div>
+            <div className="float absolute bottom-40 right-8 z-10 hidden rounded-2xl glass px-4 py-3 text-xs font-semibold text-foreground shadow-xl md:block" style={{ animationDelay: "1.5s" }}>🛍️ New lead captured</div>
           </div>
           {/* notch with agent chips */}
           <div className="relative -mt-32 flex w-fit flex-wrap gap-4 rounded-tr-[2.5rem] bg-background pr-6 pt-6">
             {[[Headphones, "Customer", "Support"], [Sparkles, "Lead", "Capture"], [Calendar, "Sales", "Follow-ups"]].map(([I, a, b]: any) => (
-              <div key={a} className="w-36 rounded-2xl bg-surface p-4 text-sm font-semibold">
+              <div key={a} className="w-36 rounded-2xl glass-soft p-4 text-sm font-semibold">
                 <I className="mb-3 h-5 w-5 text-brand" />{a}<br />{b}
               </div>
             ))}
@@ -108,8 +108,8 @@ function Index() {
         <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">Built for Zimbabwean businesses that sell on WhatsApp</h2>
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[[Store, "Clothing shops &", "boutiques"], [Truck, "Online retailers &", "delivery stores"], [Users, "Small & medium", "businesses"], [Rocket, "Growing African", "brands"]].map(([I, a, b]: any) => (
-            <div key={a} className="rounded-3xl bg-surface p-7 text-left transition hover:-translate-y-1 hover:shadow-xl">
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-card shadow-sm"><I className="h-5 w-5 text-destructive" /></span>
+            <div key={a} className="rounded-3xl glass-soft p-7 text-left transition hover:-translate-y-1 hover:shadow-xl">
+              <span className="grid h-10 w-10 place-items-center rounded-xl glass shadow-sm"><I className="h-5 w-5 text-destructive" /></span>
               <p className="mt-8 font-semibold">{a}<br />{b}</p>
             </div>
           ))}
@@ -119,7 +119,7 @@ function Index() {
 
       {/* Two ways */}
       <section id="pricing" className="mx-auto max-w-7xl px-6">
-        <div className="rounded-[2.5rem] bg-surface px-6 py-20 text-center md:px-16">
+        <div className="rounded-[2.5rem] glass-soft px-6 py-20 text-center md:px-16">
           <Eyebrow>Simple monthly subscriptions</Eyebrow>
           <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl">Pay Monthly For The Features And Usage Your Business Needs.</h2>
           <div className="mt-14 grid items-start gap-8 text-left md:grid-cols-2">
@@ -127,7 +127,7 @@ function Index() {
               { tag: "For shops getting started", name: "Sawabot Starter", sub: "Automatic answers to your most common customer enquiries.", items: ["Instant replies on prices, sizes & stock", "Delivery & payment info (EcoCash, cash, swipe)", "Capture every new customer", "Available 24/7, even after hours"], best: ["Clothing shops", "Boutiques", "Small retailers"], cta: "Start with Starter", c: "bg-primary", t: "text-brand", lift: "md:mt-10" },
               { tag: "For growing sales teams", name: "Sawabot Growth", sub: "Turn conversations into sales with leads and follow-ups.", items: ["Everything in Starter", "Organise all chats in one dashboard", "Track and manage sales leads", "Automatic follow-ups on opportunities"], best: ["Online retailers", "Multi-staff shops", "SMEs"], cta: "Choose Growth", c: "bg-primary", t: "text-destructive", lift: "" },
             ].map((p) => (
-              <div key={p.name} className={`rounded-[2rem] bg-card p-10 shadow-sm ${p.lift}`}>
+              <div key={p.name} className={`rounded-[2rem] glass p-10 shadow-sm ${p.lift}`}>
                 <p className={`text-xs font-semibold ${p.t}`}>{p.tag}</p>
                 <h3 className="mt-2 text-2xl font-bold">{p.name}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{p.sub}</p>
@@ -237,7 +237,7 @@ function Index() {
         <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">The Best Way To Understand<br />Sawabot Is To Try It.</h2>
         <div className="mt-14 grid gap-8 md:grid-cols-2">
           {[["Message a demo", "clothing shop on WhatsApp", clinic], ["Message a demo", "online store", realestate]].map(([a, b, img]) => (
-            <div key={b} className="rounded-[2rem] bg-surface p-8">
+            <div key={b} className="rounded-[2rem] glass-soft p-8">
               <p className="text-lg font-medium">{a}<br />{b}</p>
               <img src={img} alt={b} loading="lazy" width={1024} height={640} className="mx-auto mt-6 aspect-[16/10] w-4/5 rounded-2xl object-cover" />
               <a href="#" className={`${btn} mt-8 bg-brand-soft text-brand`}>Try it now</a>
